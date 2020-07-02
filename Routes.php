@@ -56,11 +56,9 @@ Route::set('register', function () {
                     }
                 } else
                     Auth::error();
-            }
-            else
+            } else
                 Auth::error();
-        }
-        else
+        } else
             Auth::passwordError();
     } else
         Index::CreateView('Register');
