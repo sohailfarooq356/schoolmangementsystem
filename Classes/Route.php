@@ -17,8 +17,8 @@ class Route
     public static function set($route, $function)
     {
         self::$validRoutes[] = $route;
-        echo $_GET['url'];
-        var_dump($_GET);
+        //echo $_GET['url'];
+        //var_dump($_GET);
         if ($_GET['url'] == $route) {
             $function->__invoke();
         }

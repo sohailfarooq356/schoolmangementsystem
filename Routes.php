@@ -1,4 +1,4 @@
-'<?php session_start();
+<?php session_start();
 Route::set('index.php', function () {
     Index::CreateView('Index');
 });
