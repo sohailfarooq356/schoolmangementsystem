@@ -5,7 +5,7 @@
     <!-- Links -->
     <ul class="navbar-nav">
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            <a class="nav-link dropdown-toggle" href="teachers" id="navbardrop" data-toggle="dropdown">
                 Teachers
             </a>
             <div class="dropdown-menu">
@@ -18,8 +18,8 @@
                 Students
             </a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="admin/students">View Students</a>
-                <a class="dropdown-item" href="admin/addstudent">Add new Student</a>
+                <a class="dropdown-item" href="../admin/students">View Students</a>
+                <a class="dropdown-item" href="../admin/addstudent">Add new Student</a>
             </div>
         </li>
         <li class="nav-item dropdown">
@@ -27,8 +27,8 @@
                 Classes
             </a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="admin/classes">View Classes</a>
-                <a class="dropdown-item" href="admin/addclass">Add new Class</a>
+                <a class="dropdown-item" href="../admin/classes">View Classes</a>
+                <a class="dropdown-item" href="../admin/addclass">Add new Class</a>
             </div>
         </li>
         <li class="nav-item dropdown">
@@ -36,8 +36,8 @@
                 Subjects
             </a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="admin/subjects">View Subjects</a>
-                <a class="dropdown-item" href="admin/addsubject">Add new Subject</a>
+                <a class="dropdown-item" href="../admin/subjects">View Subjects</a>
+                <a class="dropdown-item" href="../admin/addsubject">Add new Subject</a>
             </div>
         </li>
 
@@ -47,11 +47,11 @@
                 Assignments
             </a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="admin/assignclasstostudent">Assign Class to Student</a>
-                <a class="dropdown-item" href="admin/assignsubjecttoclass">Assign Subject to a Class</a>
-                <a class="dropdown-item" href="admin/assignteachertostudent">Assign Teacher to a Student</a>
-                <a class="dropdown-item" href="admin/assignteachertoclass">Assign Teacher to a Class</a>
-                <a class="dropdown-item" href="admin/unassignsubject">Unassign Subject to a Class</a>
+                <a class="dropdown-item" href="../admin/assignclasstostudent">Assign Class to Student</a>
+                <a class="dropdown-item" href="../admin/assignsubjecttoclass">Assign Subject to a Class</a>
+                <a class="dropdown-item" href="../admin/assignteachertostudent">Assign Teacher to a Student</a>
+                <a class="dropdown-item" href="../admin/assignteachertoclass">Assign Teacher to a Class</a>
+                <a class="dropdown-item" href="../admin/unassignsubject">Unassign Subject to a Class</a>
             </div>
         </li>
     </ul>
@@ -64,7 +64,7 @@
             <img src="../<?php echo $_SESSION['user_img'] ?>" alt="Avatar" height="50" height="50" class="avatar">
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="logout">Logout</a>
+            <a class="nav-link" href="../logout">Logout</a>
         </li>
 
 

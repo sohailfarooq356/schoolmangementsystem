@@ -72,4 +72,32 @@ class Database
             echo $e->getMessage();
         }
     }
+
+    /**
+     * Description of insertData
+     *  This function is used to insert data into database.
+     * @param string $table Table name to get values from table.
+     * @param array[] $condition_arr Values and fields where you want to insert.
+     * @author SohailFarooq
+     */
+    public static function insert($table, array $condition_arr)
+    {
+        try {
+            if ($condition_arr != '') {
+                foreach ($condition_arr as $key => $val) {
+                    $fieldArr[] = $key;
+                    $valueArr[] = $val;
+                }
+                $field = implode(",", $fieldArr);
+                $value = implode("','", $valueArr);
+                $value = "'" . $value . "'";
+                $sql = "insert into $table($field) values($value) ";
+                $query = self::connect()->prepare($sql);
+                $query->execute();
+                return true;
+            }
+        } catch (ErrorException $e) {
+            echo $e->getMessage();
+        }
+    }
 }

@@ -11,11 +11,11 @@
 </head>
 <body>
 
-<?php include("Views/Includes/inc.AdminHeader.php"); ?>
+<?php AdminController::CreateView('Includes/inc.AdminHeader'); ?>
 
 <div class="container">
     <h1 class="h1 text-center">Hello, <?php echo $_SESSION['_name']; ?></h1>
 </div>
-<?php  include("Views/Includes/inc.Footer.php"); ?>
+<?php AdminController::CreateView('Includes/inc.Footer'); ?>
 </body>
 </html>

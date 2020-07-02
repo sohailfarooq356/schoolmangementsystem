@@ -1,5 +1,8 @@
 <?php
 require 'Routes.php';
+require 'AdminRoutes.php';
+require 'TecaherRoutes.php';
+require 'StudentRoutes.php';
 
 function __autoload($classname)
 {
