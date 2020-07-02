@@ -1,4 +1,5 @@
 <?php session_start();
+
 Route::set('index.php', function () {
     Index::CreateView('Index');
 });
@@ -31,7 +32,27 @@ Route::set('register', function () {
                 ];
                 if (!Auth::get('users', '*', $check_field)) {
                     if (Auth::insert('users', $fields)) {
-                        Auth::success();
+                        if ($_POST['roleselect'] == 'teacher') {
+                            $result = Auth::get('users', 'user_id', $check_field);
+                            $fields = array(
+                                'tea_name' => $_POST['name'],
+                                'user_id' => $result[0]['user_id'],
+                                'username' => $_POST['username']
+                            );
+                            if (Auth::insert('teachers', $fields)) {
+                                Auth::success();
+                            }
+                        } elseif ($_POST['roleselect'] == 'student') {
+                            $result = Auth::get('users', 'user_id', $check_field);
+                            $field = [
+                                'std_name' => $_POST['name'],
+                                'user_id' => $result[0]['user_id'],
+                                'username' => $_POST['username']
+                            ];
+                            if (Auth::insert('students', $fields)) {
+                                Auth::success();
+                            }
+                        }
                     }
                 } else
                     Auth::error();
@@ -71,22 +92,6 @@ Route::set('auth', function () {
         } else {
             Auth::error();
         }
-    }
-});
-
-Route::set('teacher', function () {
-    if (isset($_SESSION['role']) && $_SESSION['role'] == 'teacher') {
-        TeacherController::CreateView('Teacher/TeacherIndex');
-    } else {
-        header('Location: ./');
-    }
-});
-
-Route::set('student', function () {
-    if (isset($_SESSION['role']) && $_SESSION['role'] == 'student') {
-        StudentController::CreateView('Student/StudentIndex');
-    } else {
-        header('Location: ./');
     }
 });
 

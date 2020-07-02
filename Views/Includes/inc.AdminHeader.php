@@ -5,12 +5,12 @@
     <!-- Links -->
     <ul class="navbar-nav">
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="teachers" id="navbardrop" data-toggle="dropdown">
+            <a class="nav-link dropdown-toggle" href="" id="navbardrop" data-toggle="dropdown">
                 Teachers
             </a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="admin/teachers">View Teachers</a>
-                <a class="dropdown-item" href="admin/addteacher">Add new Teacher</a>
+                <a class="dropdown-item" href="../admin/teachers">View Teachers</a>
+                <a class="dropdown-item" href="../admin/add/teacher">Add new Teacher</a>
             </div>
         </li>
         <li class="nav-item dropdown">
@@ -19,7 +19,7 @@
             </a>
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="../admin/students">View Students</a>
-                <a class="dropdown-item" href="../admin/addstudent">Add new Student</a>
+                <a class="dropdown-item" href="../admin/add/student">Add new Student</a>
             </div>
         </li>
         <li class="nav-item dropdown">
@@ -28,7 +28,7 @@
             </a>
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="../admin/classes">View Classes</a>
-                <a class="dropdown-item" href="../admin/addclass">Add new Class</a>
+                <a class="dropdown-item" href="../admin/add/class">Add new Class</a>
             </div>
         </li>
         <li class="nav-item dropdown">
@@ -37,7 +37,7 @@
             </a>
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="../admin/subjects">View Subjects</a>
-                <a class="dropdown-item" href="../admin/addsubject">Add new Subject</a>
+                <a class="dropdown-item" href="../admin/add/subject">Add new Subject</a>
             </div>
         </li>
 
