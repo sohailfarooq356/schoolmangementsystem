@@ -7,7 +7,7 @@ Route::set('index.php', function () {
 
 Route::set('register', function () {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $target_directory = 'IMG/';
+        $target_directory = 'Views/IMG/';
         $target_file = $target_directory . basename($_FILES["simg"]["name"]);
 
         $filename = basename($_FILES["simg"]["name"]);
@@ -101,5 +101,7 @@ Route::set('logout', function () {
     session_destroy();
     header('Location: ./');
 });
+
+
 
 

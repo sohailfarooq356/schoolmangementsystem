@@ -190,7 +190,7 @@ Route::set('admin/subjects', function () {
 Route::set('admin/add/teacher', function () {
     if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $target_directory = 'IMG/';
+            $target_directory = 'Views/IMG/';
             $target_file = $target_directory . basename($_FILES["simg"]["name"]);
 
             $filename = basename($_FILES["simg"]["name"]);
@@ -242,7 +242,7 @@ Route::set('admin/add/teacher', function () {
 Route::set('admin/add/student', function () {
     if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $target_directory = 'IMG/';
+            $target_directory = 'Views/IMG/';
             $target_file = $target_directory . basename($_FILES["simg"]["name"]);
 
             $filename = basename($_FILES["simg"]["name"]);
