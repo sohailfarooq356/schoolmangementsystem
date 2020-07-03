@@ -8,19 +8,123 @@ Route::set('admin', function () {
 });
 
 Route::set('admin/teachers', function () {
-    AdminController::CreateView('Admin/ViewTeachers');
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (isset($_POST['submit']) && $_POST['submit'] == 'Update') {
+            $checkfield = [
+                'username' => $_POST['username']
+            ];
+            $fields = [
+                'tea_name' => $_POST['tname'],
+                'username' => $_POST['username']
+            ];
+            if (!AdminController::get('users', '*', $checkfield)) {
+                if (AdminController::update('teachers', $fields, 'tea_id', $_POST['tea_id'])) {
+                    $fields = [
+                        'name' => $_POST['tname'],
+                        'username' => $_POST['username']
+                    ];
+                    if (AdminController::update('users', $fields, 'user_id', $_POST['user_id'])) {
+                        AdminController::success();
+                    }
+                }
+            } else {
+                $fields = [
+                    'tea_name' => $_POST['tname'],
+                ];
+                if (AdminController::update('teachers', $fields, 'tea_id', $_POST['tea_id'])) {
+                    $fields = [
+                        'name' => $_POST['tname'],
+                    ];
+                    if (AdminController::update('users', $fields, 'user_id', $_POST['user_id'])) {
+                        AdminController::success();
+                    }
+                }
+            }
+        } elseif (isset($_POST['submit']) && $_POST['submit'] == 'Delete') {
+            $fields = [
+                'user_id' => $_POST['user_id']
+            ];
+            if (AdminController::delete('users', $fields)) {
+                if (AdminController::delete('teachers', $fields)) {
+                    AdminController::success();
+                } else {
+                    AdminController::error();
+                }
+            } else {
+                AdminController::error();
+            }
+        }
+    } else {
+        AdminController::CreateView('Admin/ViewTeachers');
+    }
 });
 
 Route::set('admin/students', function () {
-    AdminController::CreateView('Admin/ViewStudents');
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    } else {
+        AdminController::CreateView('Admin/ViewStudents');
+    }
 });
 
 Route::set('admin/classes', function () {
-    AdminController::CreateView('Admin/ViewCLasses');
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (isset($_POST['submit']) && $_POST['submit'] == 'Update') {
+            $fields = [
+                'cls_name' => $_POST['cname']
+            ];
+            if (!AdminController::get('classes', '*', $fields)) {
+                if (AdminController::update('classes', $fields, 'cls_id', $_POST['cls_id'])) {
+                    AdminController::success();
+                } else {
+                    AdminController::error();
+                }
+            } else {
+                AdminController::error();
+            }
+        } elseif (isset($_POST['submit']) && $_POST['submit'] == 'Delete') {
+            $fields = [
+                'cls_id' => $_POST['cls_id']
+            ];
+            if (AdminController::delete('classes', $fields)) {
+                AdminController::success();
+            } else {
+                AdminController::error();
+            }
+        }
+    } else {
+        AdminController::CreateView('Admin/ViewCLasses');
+    }
 });
 
 Route::set('admin/subjects', function () {
-    AdminController::CreateView('Admin/ViewSubjects');
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (isset($_POST['submit']) && $_POST['submit'] == 'Update') {
+            $fields = [
+                'sub_name' => $_POST['sname']
+            ];
+            if (!AdminController::get('subjects', '*', $fields)) {
+                if (AdminController::update('subjects', $fields, 'sub_id', $_POST['sub_id'])) {
+                    AdminController::success();
+                } else {
+                    AdminController::error();
+                }
+            } else {
+                AdminController::error();
+            }
+        } elseif (isset($_POST['submit']) && $_POST['submit'] == 'Delete') {
+            $fields = [
+                'sub_id' => $_POST['sub_id']
+            ];
+            if (AdminController::delete('subjects', $fields)) {
+                AdminController::success();
+            } else {
+                AdminController::error();
+            }
+        }
+    } else {
+        AdminController::CreateView('Admin/ViewSubjects');
+    }
 });
 
 Route::set('admin/add/teacher', function () {
@@ -154,5 +258,111 @@ Route::set('admin/add/subject', function () {
         }
     } else {
         AdminController::CreateView('Admin/AddSubject');
+    }
+});
+
+Route::set('admin/assignclasstostudent', function () {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $fields = [
+            'cls_id' => $_POST['sclass'],
+            'sub_id' => 0,
+            'std_id' => $_POST['sstudent'],
+            'tea_id' => 0
+        ];
+        if (!AdminController::get('addto_class', '*', $fields)) {
+            if (AdminController::insert('addto_class', $fields)) {
+                AdminController::success();
+            } else {
+                AdminController::error();
+            }
+        } else {
+            AdminController::error();
+        }
+    } else {
+        AdminController::CreateView('Admin/AssignClassToStudent');
+    }
+});
+
+Route::set('admin/assignsubjecttoclass', function () {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $fields = [
+            'cls_id' => $_POST['sclass'],
+            'sub_id' => $_POST['ssubject'],
+        ];
+        if (!AdminController::get('addto_class', '*', $fields)) {
+            $fields = [
+                'sub_id' => $_POST['ssubject'],
+            ];
+            if (AdminController::update('addto_class', $fields, 'cls_id', $_POST['sclass'])) {
+                AdminController::success();
+            } else {
+                AdminController::error();
+            }
+        } else {
+            AdminController::error();
+        }
+    } else {
+        AdminController::CreateView('Admin/AssignSubjectToClass');
+    }
+});
+
+Route::set('admin/assignteachertostudent', function () {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $fields = [
+            'tea_id' => $_POST['steacher'],
+            'std_id' => $_POST['sstudent'],
+        ];
+        if (!AdminController::get('addto_class', '*', $fields)) {
+            $fields = [
+                'tea_id' => $_POST['steacher'],
+            ];
+            if (AdminController::update('addto_class', $fields, 'std_id', $_POST['sstudent'])) {
+                AdminController::success();
+            } else {
+                AdminController::error();
+            }
+        } else {
+            AdminController::error();
+        }
+    } else {
+        AdminController::CreateView('Admin/AssignTeacherToStudent');
+    }
+});
+
+Route::set('admin/assignteachertoclass', function () {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $fields = [
+            'cls_id' => $_POST['sclass'],
+            'tea_id' => $_POST['steacher'],
+        ];
+        if (!AdminController::get('addto_class', '*', $fields)) {
+            $fields = array(
+                'tea_id' => $_POST['steacher'],
+            );
+            if (AdminController::update('addto_class', $fields, 'cls_id', $_POST['sclass'])) {
+                AdminController::success();
+            } else {
+                AdminController::error();
+            }
+        } else {
+            AdminController::error();
+        }
+    } else {
+        AdminController::CreateView('Admin/AssignTeacherToClass');
+    }
+});
+
+Route::set('admin/unassignsubject', function () {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $fields = [
+            'sub_id' => 0,
+        ];
+        if (AdminController::update('addto_class', $fields, 'cls_id', $_POST['sclass'])) {
+            AdminController::success();
+        } else {
+            AdminController::error();
+        }
+    } else {
+        AdminController::CreateView('Admin/UnassignSubject');
     }
 });

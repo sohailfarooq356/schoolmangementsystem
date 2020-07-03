@@ -36,7 +36,7 @@
             echo'<tr>';
             echo'<th scope="row">' . $row['sub_id'] . '</th>';
             echo'<td><input type="text" class="form-control" name="sname" value="' . $row['sub_name'] . '"/></td>';
-            echo'<td><input type="hidden" name="sub_id" value="' . $row['sub_id'] . '"/><input type="submit" class="btn btn-primary" value="Update" /></form><a href="?type=delete&sub_id=' . $row['sub_id'] . '" class="btn btn-danger">Delete</a></td>';
+            echo'<td><input type="hidden" name="sub_id" value="' . $row['sub_id'] . '"/><input type="submit" name="submit" class="btn btn-primary" value="Update" /><input type="submit" name="submit" class="btn btn-danger" value="Delete" /></form></td>';
             echo'</tr>';
         }
         ?>

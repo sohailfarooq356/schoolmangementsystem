@@ -40,7 +40,7 @@
             echo'<td><input type="text" class="form-control" name="tname" value="' . $row['tea_name'] . '"/></td>';
             echo'<th scope="row">' . $row['user_id'] . '</th>';
             echo'<td><input type="text" class="form-control" name="username" value="' . $row['username'] . '"/></td>';
-            echo'<td><input type="hidden" name="tea_id" value="' . $row['tea_id'] . '"/><input type="hidden" name="user_id" value="' . $row['user_id'] . '"/><input type="submit" class="btn btn-primary" value="Update" /></form><a href="?type=delete&user_id=' . $row['user_id'] . '" class="btn btn-danger">Delete</a></td>';
+            echo'<td><input type="hidden" name="tea_id" value="' . $row['tea_id'] . '"/><input type="hidden" name="user_id" value="' . $row['user_id'] . '"/><input type="submit" name="submit" class="btn btn-primary" value="Update" /><input type="submit" name="submit" class="btn btn-danger" value="Delete" /></form></td>';
             echo'</tr>';
         }
         ?>

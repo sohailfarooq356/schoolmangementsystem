@@ -1,2 +1,3 @@
 RewriteEngine On
+RewriteRule ^(.*)/Views/IMG/(.*) Views/IMG/$1 [L]
 RewriteRule ^(.+?)/?$ index.php?url=$1 [L,QSA]

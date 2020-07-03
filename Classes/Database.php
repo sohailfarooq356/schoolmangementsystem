@@ -100,4 +100,78 @@ class Database
             echo $e->getMessage();
         }
     }
+
+    /**
+     * Description of getData
+     *  This function is used to get data from database.
+     * @param string $table Table name to get values from table.
+     * @param array[] $condition_arr Where command for a query.
+     * @param string $where_field Fields you want to set values.
+     * @param string $where_value Value of the fields.
+     * @author SohailFarooq
+     */
+    /**
+     * Description of getData
+     *  This function is used to get data from database.
+     * @param string $table Table name to get values from table.
+     * @param array[] $condition_arr Where command for a query.
+     * @param string $where_field Fields you want to set values.
+     * @param string $where_value Value of the fields.
+     * @author SohailFarooq
+     */
+    public static function update($table, array $condition_arr, $where_field, $where_value)
+    {
+        try {
+            if ($condition_arr != '') {
+                $sql = "update $table set ";
+                $count = count($condition_arr);
+                $countindex = 1;
+                foreach ($condition_arr as $key => $val) {
+                    if ($countindex == $count) {
+                        $sql .= "$key='$val'";
+                    } else {
+                        $sql .= "$key='$val', ";
+                    }
+                    $countindex++;
+                }
+                $sql .= " where $where_field='$where_value' ";
+                $query = self::connect()->prepare($sql);
+                $query->execute();
+                return true;
+            }
+        } catch (ErrorException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    /**
+     * Description of getData
+     *  This function is used to get data from database.
+     * @param string $table Table name to get values from table.
+     * @param array[] $condition_arr Where command for a query to delete data.
+     * @author SohailFarooq
+     */
+    public static function delete($table, array $condition_arr)
+    {
+        try {
+            if ($condition_arr != '') {
+                $sql = "delete from $table where ";
+                $count = count($condition_arr);
+                $countindex = 1;
+                foreach ($condition_arr as $key => $val) {
+                    if ($countindex == $count) {
+                        $sql .= "$key='$val'";
+                    } else {
+                        $sql .= "$key='$val' and ";
+                    }
+                    $countindex++;
+                }
+                $query = self::connect()->prepare($sql);
+                $query->execute();
+                return true;
+            }
+        } catch (ErrorException $e) {
+            echo $e->getMessage();
+        }
+    }
 }
