@@ -3,7 +3,7 @@
 
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">© 2020 Copyright:
-        <a href="#"> LMS.com</a>
+        <a href="<?php echo $_SERVER['PHP_SELF']; ?>"> LMS.com</a>
     </div>
     <!-- Copyright -->
 

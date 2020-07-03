@@ -24,7 +24,7 @@
             Welcome, <?php echo $_SESSION['_name']; ?> |
         </span>
         <li class="nav-item">
-            <img src="../<?php echo $_SESSION['user_img'] ?>" alt="Avatar" height="50" height="50" class="avatar">
+            <img src="../Views/IMG/<?php echo $_SESSION['user_img'] ?>" alt="Avatar" height="50" height="50" class="avatar">
         </li>
         <li class="nav-item">
             <a class="nav-link" href="../logout">Logout</a>

@@ -39,19 +39,19 @@
         $result = TeacherController::get('addto_class','*',$fields);
         foreach ($result as $row) {
 
-            $field = ['sub_id' => $row['sub_id']];
-            $result2 = TeacherController::get('subjects','*',$field);
+            $fields = ['sub_id' => $row['sub_id']];
+            $result2 = TeacherController::get('subjects','*',$fields);
 
             foreach ($result2 as $row2) {
-                $field = ['cls_id' => $row['cls_id']];
-                $result1 = TeacherController::get('classes','*',$field);
+                $fields = ['cls_id' => $row['cls_id']];
+                $result1 = TeacherController::get('classes','*',$fields);
                 foreach ($result1 as $row1) {
                     echo'<tr>';
                     echo'<th scope="row">' . $row1['cls_id'] . '</th>';
                     echo'<th scope="row">' . $row1['cls_name'] . '</th>';
                     echo'<th scope="row">' . $row2['sub_id'] . '</th>';
                     echo'<th scope="row">' . $row2['sub_name'] . '</th>';
-                    echo'<td><a class="btn btn-primary" href="upload.php?classid=' . $row1['cls_id'] . '&subjectid=' . $row2['sub_id'] . '">Upload Leacture</a></td>';
+                    echo'<td><a class="btn btn-primary" href="upload?classid=' . $row1['cls_id'] . '&subjectid=' . $row2['sub_id'] . '">Upload Leacture</a></td>';
                     echo'</tr>';
                 }
             }

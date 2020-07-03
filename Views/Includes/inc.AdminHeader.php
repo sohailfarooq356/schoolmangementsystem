@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <!-- Brand -->
-    <a class="navbar-brand" href="index.php">Learning Management System</a>
+    <a class="navbar-brand" href="<?php echo $_SERVER['PHP_SELF']; ?>">Learning Management System</a>
 
     <!-- Links -->
     <ul class="navbar-nav">
@@ -61,7 +61,7 @@
             Welcome, <?php echo $_SESSION['_name']; ?> |
         </span>
         <li class="nav-item">
-            <img src="/<?php echo 'schoolmangementsystem/'.$_SESSION['user_img'] ?>" alt="Avatar" height="50" height="50" class="avatar">
+            <img src="../Views/IMG/<?php echo $_SESSION['user_img'] ?>" alt="Avatar" height="50" height="50" class="avatar">
         </li>
         <li class="nav-item">
             <a class="nav-link" href="../logout">Logout</a>
